@@ -1,8 +1,10 @@
-// solution by @midas10
+// solution by @midas10			
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
-// Part 2
+
+// Part 1
+
 public class Day6 {
 	public static void main (String[] args) throws IOException {
 		HashSet<Character> hash = new HashSet<>();
@@ -12,23 +14,26 @@ public class Day6 {
 		int result = 0;
 		int hashSize = 0;
 
-		for (int i = 0; i < strArr.length-3; i++) {
-			for (int j = 0; j < 4; j++) {
+		int  i = 0;
+		int j = 0;
+
+		while (result == 0 && i < strArr.length-3) {
+			j = 0;
+			boolean check = true;
+			while (hash.size() != 4 && j < 4 && check) {
 				hash.add(strArr[i+j]);
 				hashSize++;
 				if (hashSize > hash.size()) {
 					hash.clear();
 					hashSize=0;
-					break;
+					check = false;
 				}
 				if (hash.size() == 4) {
 					result = i+4;
-					break;
 				}
+				j++;
 			}
-			if (result > 0) {
-				break;
-			}
+			i++;
 		}
 
 		System.out.println(result);
@@ -36,6 +41,7 @@ public class Day6 {
 }
 
 //Part 2
+
 public class Day6 {
 	public static void main (String[] args) throws IOException {
 		HashSet<Character> hash = new HashSet<>();
@@ -44,24 +50,26 @@ public class Day6 {
 		char[] strArr = y.toCharArray();
 		int result = 0;
 		int hashSize = 0;
+		int  i = 0;
+		int j = 0;
 
-		for (int i = 0; i < strArr.length-13; i++) {
-			for (int j = 0; j < 14; j++) {
+		while (result == 0 && i < strArr.length-13) {
+			j = 0;
+			boolean check = true;
+			while (hash.size() != 14 && j < 14 && check) {
 				hash.add(strArr[i+j]);
 				hashSize++;
 				if (hashSize > hash.size()) {
 					hash.clear();
 					hashSize=0;
-					break;
+					check = false;
 				}
 				if (hash.size() == 14) {
 					result = i+14;
-					break;
 				}
+				j++;
 			}
-			if (result > 0) {
-				break;
-			}
+			i++;
 		}
 
 		System.out.println(result);
